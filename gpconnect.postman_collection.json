@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d3b8ff60-4418-40a1-a645-496bc69c5f79",
+		"_postman_id": "a03496b9-8549-48cf-a6a6-80e31579299c",
 		"name": "GP Connect",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1574,7 +1574,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "7423bb96-63e8-48f3-90a4-faa9593332f4",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -1667,7 +1666,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1705,7 +1705,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"resourceType\": \"Parameters\",\r\n  \"parameter\": [{\r\n    \"name\": \"registerPatient\",\r\n    \"resource\": {\r\n      \"resourceType\": \"Patient\",\r\n      \"meta\": {\r\n        \"profile\": [\"https://fhir.nhs.uk/StructureDefinition/CareConnect-GPC-Patient-1\"]\r\n      },\r\n      \"identifier\": [{\r\n        \"extension\": [{\r\n          \"url\": \"https://fhir.nhs.uk/StructureDefinition/Extension-CareConnect-GPC-NHSNumberVerificationStatus-1\",\r\n          \"valueCodeableConcept\": {\r\n            \"coding\": [{\r\n              \"system\": \"https://fhir.nhs.uk/CareConnect-NHSNumberVerificationStatus-1\",\r\n              \"code\": \"01\"\r\n            }]\r\n          }\r\n        }],\r\n        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\r\n        \"value\": \"9476719931\"\r\n      }],\r\n      \"active\": true,\r\n      \"name\": [{\r\n        \"use\": \"official\",\r\n        \"family\": [\"Smith\"],\r\n        \"given\": [\"Mike\"]\r\n      }],\r\n      \"gender\": \"male\",\r\n      \"birthDate\": \"1976-01-10\"\r\n    }\r\n  }]\r\n}"
+							"raw": "{\r\n  \"resourceType\": \"Parameters\",\r\n  \"parameter\": [\r\n    {\r\n      \"name\": \"registerPatient\",\r\n      \"resource\": {\r\n        \"resourceType\": \"Patient\",\r\n        \"extension\": [\r\n          {\r\n            \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-CareConnect-GPC-NHSCommunication-1\",\r\n            \"extension\": [\r\n              {\r\n                \"url\": \"interpreterRequired\",\r\n                \"valueBoolean\": false\r\n              },\r\n              {\r\n                \"url\": \"language\",\r\n                \"valueCodeableConcept\": {\r\n                  \"coding\": [\r\n                    {\r\n                      \"system\": \"https://fhir.nhs.uk/STU3/ValueSet/CareConnect-HumanLanguage-1\",\r\n                      \"code\": \"sk\"\r\n                    }\r\n                  ]\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"identifier\": [\r\n          {\r\n            \"extension\": [\r\n              {\r\n                \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-CareConnect-GPC-NHSNumberVerificationStatus-1\",\r\n                \"valueCodeableConcept\": {\r\n                  \"coding\": [\r\n                    {\r\n                      \"system\": \"https://fhir.nhs.uk/STU3/ValueSet/CareConnect-NHSNumberVerificationStatus-1\",\r\n                      \"code\": \"01\"\r\n                    }\r\n                  ],\r\n                  \"text\": \"Slovak\"\r\n                }\r\n              }\r\n            ],\r\n            \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\r\n            \"value\": \"4071103582\"\r\n          }\r\n        ],\r\n        \"name\": [\r\n          {\r\n            \"use\": \"official\",\r\n            \"family\": \"Example\",\r\n            \"given\": [\r\n              \"Newly\",\r\n              \"Registered\"\r\n            ]\r\n          }\r\n        ],\r\n        \"telecom\": [\r\n          {\r\n            \"system\": \"email\",\r\n            \"value\": \"register.example@gpconnect.com\",\r\n            \"use\": \"home\"\r\n          },\r\n          {\r\n            \"system\": \"phone\",\r\n            \"value\": \"01251478956\",\r\n            \"use\": \"home\"\r\n          }\r\n        ],\r\n        \"gender\": \"other\",\r\n        \"birthDate\": \"2018-11-01\",\r\n        \"address\": [\r\n          {\r\n            \"use\": \"temp\",\r\n            \"line\": [\r\n              \"56 Treville Road\"\r\n            ],\r\n            \"city\": \"Leeds\",\r\n            \"postalCode\": \"LS13 4RB\",\r\n            \"country\": \"West Yorkshire\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{providerURL_1_x_x}}/Patient/$gpc.registerpatient",
@@ -1732,7 +1732,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "3ab82645-be00-4134-b20b-6ef95118d2df",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -1825,7 +1824,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1863,16 +1863,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"resourceType\": \"Appointment\",\n    \"id\": \"1\",\n    \"meta\": {\n        \"versionId\": \"1528070470000\",\n        \"lastUpdated\": \"2018-06-04T01:01:10.000+01:00\",\n        \"profile\": [\n            \"https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-Appointment-1\"\n        ]\n    },\n    \"identifier\": [\n        {\n            \"system\": \"https://fhir.nhs.uk/Id/gpconnect-appointment-identifier\",\n            \"value\": \"1\"\n        }\n    ],\n    \"status\": \"booked\",\n    \"appointmentType\": {\n        \"coding\": [\n            {\n                \"system\": \"http://hl7.org/fhir/ValueSet/c80-practice-codes\",\n                \"code\": \"408443003\",\n                \"display\": \"General medical practice\"\n            }\n        ],\n        \"text\": \"In-person\"\n    },\n    \"priority\": 0,\n    \"description\": \"A appointment to discuss test data, updated by postman\",\n    \"start\": \"2018-06-05T09:00:00.000+01:00\",\n    \"end\": \"2018-06-05T09:10:00.000+01:00\",\n    \"minutesDuration\": 10,\n    \"slot\": [\n        {\n            \"reference\": \"Slot/6056\"\n        }\n    ],\n    \"participant\": [\n        {\n            \"actor\": {\n                \"reference\": \"Patient/2\"\n            },\n            \"status\": \"accepted\"\n        },\n        {\n            \"actor\": {\n                \"reference\": \"Location/1\"\n            },\n            \"status\": \"accepted\"\n        },\n        {\n            \"actor\": {\n                \"reference\": \"Practitioner/2\"\n            },\n            \"status\": \"accepted\"\n        }\n    ]\n}"
+							"raw": "{\r\n  \"resourceType\": \"Appointment\",\r\n  \"id\": \"6\",\r\n  \"meta\": {\r\n    \"versionId\": \"1541155171000\",\r\n    \"lastUpdated\": \"2018-11-02T10:39:31.000+00:00\",\r\n    \"profile\": [\r\n      \"https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-Appointment-1\"\r\n    ]\r\n  },\r\n  \"extension\": [\r\n    {\r\n      \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-DeliveryChannel-2\",\r\n      \"valueCode\": \"In-person\"\r\n    },\r\n    {\r\n      \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-PractitionerRole-1\",\r\n      \"valueCodeableConcept\": {\r\n        \"coding\": [\r\n          {\r\n            \"system\": \"https://fhir.nhs.uk/STU3/ValueSet/GPConnect-PractitionerRole-1\",\r\n            \"code\": \"R0050\",\r\n            \"display\": \"Consultant\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ],\r\n  \"identifier\": [\r\n    {\r\n      \"system\": \"https://fhir.nhs.uk/Id/gpconnect-appointment-identifier\",\r\n      \"value\": \"5\"\r\n    }\r\n  ],\r\n  \"status\": \"booked\",\r\n  \"appointmentType\": {\r\n    \"coding\": [\r\n      {\r\n        \"system\": \"http://hl7.org/fhir/ValueSet/c80-practice-codes\",\r\n        \"code\": \"1\"\r\n      }\r\n    ],\r\n    \"text\": \"In-person\"\r\n  },\r\n  \"priority\": 0,\r\n  \"description\": \"A new amended description\",\r\n  \"start\": \"2018-11-02T15:54:02.262+00:00\",\r\n  \"end\": \"2018-11-02T16:23:59.802+00:00\",\r\n  \"minutesDuration\": 0,\r\n  \"slot\": [\r\n    {\r\n      \"reference\": \"Slot/419\"\r\n    }\r\n  ],\r\n  \"created\": \"2018-11-02T10:39:35+00:00\",\r\n  \"participant\": [\r\n    {\r\n      \"actor\": {\r\n        \"reference\": \"Patient/1\"\r\n      },\r\n      \"status\": \"accepted\"\r\n    },\r\n    {\r\n      \"actor\": {\r\n        \"reference\": \"Location/1\"\r\n      },\r\n      \"status\": \"accepted\"\r\n    },\r\n    {\r\n      \"actor\": {\r\n        \"reference\": \"Practitioner/1\"\r\n      },\r\n      \"status\": \"accepted\"\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
-							"raw": "{{providerURL_1_x_x}}/Appointment/1",
+							"raw": "{{providerURL_1_x_x}}/Appointment/6",
 							"host": [
 								"{{providerURL_1_x_x}}"
 							],
 							"path": [
 								"Appointment",
-								"1"
+								"6"
 							]
 						}
 					},
@@ -2245,7 +2245,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "2ec45c1e-683f-4b86-b147-d2e91f467280",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -2338,7 +2337,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2394,7 +2394,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "302bf146-f7c2-48e4-aa60-6ed39ce3ec24",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -2487,7 +2486,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2525,7 +2525,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"resourceType\": \"Appointment\",\n  \"meta\": {\n    \"profile\": [\"https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-Appointment-1\"]\n  },\n  \"contained\": [{\n    \"resourceType\": \"Organization\",\n    \"id\": \"1\",\n    \"meta\": {\n      \"profile\": [\"https://fhir.nhs.uk/StructureDefinition/CareConnect-GPC-Organization-1\"]\n    },\n    \"identifier\": [{\n      \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\n      \"value\": \"GPC002\"\n    }],\n    \"name\": \"GP Connect Test Organization\",\n    \"telecom\": [{\n      \"system\": \"phone\",\n      \"value\": \"01823938938\",\n      \"use\": \"temp\"\n    }]\n  }],\n  \"extension\": [\n  {\n    \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-BookingOrganisation-1\",\n    \"valueReference\": {\n      \"reference\": \"#1\"\n    }\n  }],\n  \"status\": \"booked\",\n  \"description\": \"tests description\",\n  \"start\": \"2018-03-06T09:10:01.000+00:00\",\n  \"end\": \"2018-03-06T09:20:01.000+00:00\",\n  \"slot\": [{\n    \"reference\": \"Slot/6398\"\n  }],\n  \"participant\": [{\n    \"actor\": {\n      \"reference\": \"Patient/2\"\n    },\n    \"status\": \"accepted\"\n  },\n  {\n    \"actor\": {\n      \"reference\": \"Location/1\"\n    },\n    \"status\": \"accepted\"\n  },\n  {\n    \"actor\": {\n      \"reference\": \"Practitioner/2\"\n    },\n    \"status\": \"accepted\"\n  }]\n}"
+							"raw": "{\r\n  \"resourceType\": \"Appointment\",\r\n  \"meta\": {\r\n    \"profile\": [\r\n      \"https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-Appointment-1\"\r\n    ]\r\n  },\r\n  \"contained\": [\r\n    {\r\n      \"resourceType\": \"Organization\",\r\n      \"id\": \"1\",\r\n      \"meta\": {\r\n        \"profile\": [\r\n          \"https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-GPC-Organization-1\"\r\n        ]\r\n      },\r\n      \"identifier\": [\r\n        {\r\n          \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\r\n          \"value\": \"GPC001\"\r\n        }\r\n      ],\r\n      \"name\": \"Test Organization Name\",\r\n      \"telecom\": [\r\n        {\r\n          \"system\": \"phone\",\r\n          \"value\": \"0300 303 5678\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"extension\": [\r\n    {\r\n      \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-BookingOrganisation-1\",\r\n      \"valueReference\": {\r\n        \"reference\": \"Organisation/1\"\r\n      }\r\n    }\r\n  ],\r\n  \"status\": \"booked\",\r\n  \"appointmentType\": {\r\n    \"coding\": [\r\n      {\r\n        \"system\": \"http://hl7.org/fhir/ValueSet/c80-practice-codes\",\r\n        \"code\": \"408443003\",\r\n        \"display\": \"General medical practice\"\r\n      }\r\n    ]\r\n  },\r\n  \"description\": \"A test appointment\",\r\n  \"start\": \"2018-11-01T15:54:02.262+00:00\",\r\n  \"end\": \"2018-11-01T16:23:59.802+00:00\",\r\n  \"slot\": [\r\n    {\r\n      \"reference\": \"Slot/349\"\r\n    }\r\n  ],\r\n  \"created\": \"2018-11-01T15:54:02+00:00\",\r\n  \"participant\": [\r\n    {\r\n      \"actor\": {\r\n        \"reference\": \"Patient/2\"\r\n      },\r\n      \"status\": \"accepted\"\r\n    },\r\n    {\r\n      \"actor\": {\r\n        \"reference\": \"Location/1\"\r\n      },\r\n      \"status\": \"accepted\"\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{providerURL_1_x_x}}/Appointment",
@@ -2546,7 +2546,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "3da3dbbc-6dc5-4891-9d2b-40a8f75cad3e",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -2639,7 +2638,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2677,16 +2677,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"resourceType\": \"Appointment\",\n\t\"id\": \"2\",\n\t\"meta\": {\n\t\t\"versionId\": \"1528070470000\",\n\t\t\"lastUpdated\": \"2018-06-04T01:01:10.000+01:00\",\n\t\t\"profile\": [\"https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-Appointment-1\"]\n\t},\n\t\"extension\": [{\n\t\t\"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-AppointmentCancellationReason-1\",\n\t\t\"valueString\": \"Cancellation Reason Test Text\"\n\t}],\n\t\"identifier\": [{\n\t\t\"system\": \"https://fhir.nhs.uk/Id/gpconnect-appointment-identifier\",\n\t\t\"value\": \"2\"\n\t}],\n\t\"status\": \"booked\",\n\t\"appointmentType\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://hl7.org/fhir/ValueSet/c80-practice-codes\",\n\t\t\t\"code\": \"408443003\",\n\t\t\t\"display\": \"General medical practice\"\n\t\t}],\n\t\t\"text\": \"In-person\"\n\t},\n\t\"priority\": 0,\n\t\"description\": \"A follow-up appointment for tests.\",\n\t\"start\": \"2018-06-05T09:10:00.000+01:00\",\n\t\"end\": \"2018-06-05T09:20:00.000+01:00\",\n\t\"minutesDuration\": 10,\n\t\"slot\": [{\n\t\t\"reference\": \"Slot/6057\"\n\t}],\n\t\"participant\": [{\n\t\t\"actor\": {\n\t\t\t\"reference\": \"Patient/2\"\n\t\t},\n\t\t\"status\": \"accepted\"\n\t},\n\t{\n\t\t\"actor\": {\n\t\t\t\"reference\": \"Location/1\"\n\t\t},\n\t\t\"status\": \"accepted\"\n\t},\n\t{\n\t\t\"actor\": {\n\t\t\t\"reference\": \"Practitioner/2\"\n\t\t},\n\t\t\"status\": \"accepted\"\n\t}]\n}"
+							"raw": "{\r\n  \"resourceType\": \"Appointment\",\r\n  \"id\": \"8\",\r\n  \"meta\": {\r\n    \"versionId\": \"1541157030000\",\r\n    \"lastUpdated\": \"2018-11-02T11:10:30.000+00:00\",\r\n    \"profile\": [\r\n      \"https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-Appointment-1\"\r\n    ]\r\n  },\r\n  \"extension\": [\r\n    {\r\n      \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-DeliveryChannel-2\",\r\n      \"valueCode\": \"In-person\"\r\n    },\r\n    {\r\n      \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-PractitionerRole-1\",\r\n      \"valueCodeableConcept\": {\r\n        \"coding\": [\r\n          {\r\n            \"system\": \"https://fhir.nhs.uk/STU3/ValueSet/GPConnect-PractitionerRole-1\",\r\n            \"code\": \"R0050\",\r\n            \"display\": \"Consultant\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-AppointmentCancellationReason-1\",\r\n      \"valueString\": \"Free text cancellation reason.\"\r\n    }\r\n  ],\r\n  \"identifier\": [\r\n    {\r\n      \"system\": \"https://fhir.nhs.uk/Id/gpconnect-appointment-identifier\",\r\n      \"value\": \"8\"\r\n    }\r\n  ],\r\n  \"status\": \"cancelled\",\r\n  \"appointmentType\": {\r\n    \"coding\": [\r\n      {\r\n        \"system\": \"http://hl7.org/fhir/ValueSet/c80-practice-codes\",\r\n        \"code\": \"1\"\r\n      }\r\n    ],\r\n    \"text\": \"In-person\"\r\n  },\r\n  \"priority\": 0,\r\n  \"description\": \"A test appointment\",\r\n  \"start\": \"2018-11-02T11:19:35.000+00:00\",\r\n  \"end\": \"2018-11-02T11:19:35.000+00:00\",\r\n  \"minutesDuration\": 0,\r\n  \"slot\": [\r\n    {\r\n      \"reference\": \"Slot/700\"\r\n    }\r\n  ],\r\n  \"created\": \"2018-11-02T11:10:35+00:00\",\r\n  \"participant\": [\r\n    {\r\n      \"actor\": {\r\n        \"reference\": \"Patient/1\"\r\n      },\r\n      \"status\": \"accepted\"\r\n    },\r\n    {\r\n      \"actor\": {\r\n        \"reference\": \"Location/1\"\r\n      },\r\n      \"status\": \"accepted\"\r\n    },\r\n    {\r\n      \"actor\": {\r\n        \"reference\": \"Practitioner/1\"\r\n      },\r\n      \"status\": \"accepted\"\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
-							"raw": "{{providerURL_1_x_x}}/Appointment/2",
+							"raw": "{{providerURL_1_x_x}}/Appointment/8",
 							"host": [
 								"{{providerURL_1_x_x}}"
 							],
 							"path": [
 								"Appointment",
-								"2"
+								"8"
 							]
 						}
 					},
@@ -2704,7 +2704,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "b44ddfcc-58fa-4774-8c1f-83268e5f3ee7",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -2797,7 +2796,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2835,17 +2835,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"meta\": {\n\t\t\"profile\": [\"https://fhir.nhs.uk/STU3/OperationDefinition/GPConnect-GetStructuredRecord-Operation-1\"]\n\t},\n\t\"resourceType\": \"Parameters\",\n\t\"parameter\": [{\n\t\t\"name\": \"patientNHSNumber\",\n\t\t\"valueIdentifier\": {\n\t\t\t\"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n\t\t\t\"value\": \"{{patient_nhs_number}}\"\n\t\t}\n\t},\n\t{\n\t\t\"name\": \"includeAllergies\",\n\t\t\"part\": [{\n\t\t\t\"name\": \"includeResolvedAllergies\",\n\t\t\t\"valueBoolean\": true\n\t\t}]\n\t},\n\t{\n\t\t\"name\": \"includeMedication\",\n\t\t\"part\": [{\n\t\t\t\"name\": \"includePrescriptionIssues\",\n\t\t\t\"valueBoolean\": true\n\t\t},\n\t\t{\n\t\t\t\"name\": \"medicationDatePeriod\",\n\t\t\t\"valuePeriod\": {\n\t\t\t\t\"start\": \"2017-06-04\",\n\t\t\t\t\"end\": \"2018-06-19\"\n\t\t\t}\n\t\t}]\n\t}]\n}"
+							"raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n  {\n\t\"name\": \"patientNHSNumber\",\n\t\"valueIdentifier\": {\n\t\t\"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n\t    \"value\": \"9658218873\"\n\t}\n  },\n  {\n    \"name\": \"includeAllergies\",\n    \"part\": [ {\n\t\t\"name\": \"includeResolvedAllergies\",\n\t    \"valueBoolean\": true\n\t}\n\t]\n  },\n  {\n\t\"name\": \"includeMedication\",\n\t\"part\": [\n\t{\n\t\t\"name\": \"includePrescriptionIssues\",\n\t    \"valueBoolean\": true\n\t},\n\t{\n\t\t\"name\": \"medicationSearchFromDate\",\n\t    \"valueDate\": \"1980-06-05\"\n\t}\n\t]\n  }\n  ]\n}\n\n\n"
 						},
 						"url": {
-							"raw": "http://localhost:19191/fhir/Patient/$gpc.getstructuredrecord",
-							"protocol": "http",
+							"raw": "{{providerURL_1_x_x}}/Patient/$gpc.getstructuredrecord",
 							"host": [
-								"localhost"
+								"{{providerURL_1_x_x}}"
 							],
-							"port": "19191",
 							"path": [
-								"fhir",
 								"Patient",
 								"$gpc.getstructuredrecord"
 							]
