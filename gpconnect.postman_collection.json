@@ -1,0 +1,2859 @@
+{
+	"info": {
+		"_postman_id": "d3b8ff60-4418-40a1-a645-496bc69c5f79",
+		"name": "GP Connect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Access Record HTML",
+			"item": [
+				{
+					"name": "Access Record HTML (Summary)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "913855c4-778b-4924-b414-ec3de45cbfa7",
+								"type": "text/javascript",
+								"exec": [
+									"// Get patient NHS Number from environment variables",
+									"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": \"https://authorize.fhir.nhs.net/token\",",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_record\": {",
+									"    \"resourceType\": \"Patient\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"http://fhir.nhs.net/Id/nhs-number\",",
+									"        \"value\": patient_nhs_number",
+									"      }",
+									"    ]",
+									"  },",
+									"  \"requested_scope\": \"patient/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"http://fhir.nhs.net/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"practitionerRole\": [",
+									"      {",
+									"        \"role\": {",
+									"          \"coding\": [",
+									"            {",
+									"              \"system\": \"http://fhir.nhs.net/ValueSet/sds-job-role-name-1\",",
+									"              \"code\": \"AssuranceJobRole\"",
+									"            }",
+									"          ]",
+									"        }",
+									"      }",
+									"    ],",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"http://fhir.nhs.net/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      }",
+									"    ],",
+									"    \"name\": {",
+									"      \"family\": [",
+									"        \"Demonstrator\"",
+									"      ],",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json+fhir"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:operation:gpc.getcarerecord"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json+fhir"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [{\n    \"name\": \"patientNHSNumber\",\n    \"valueIdentifier\": {\n      \"system\": \"http://fhir.nhs.net/Id/nhs-number\",\n      \"value\": \"{{patient_nhs_number}}\"\n    }\n  },\n  {\n    \"name\": \"recordSection\",\n    \"valueCodeableConcept\": {\n      \"coding\": [{\n        \"system\": \"http://fhir.nhs.net/ValueSet/gpconnect-record-section-1\",\n        \"code\": \"SUM\",\n        \"display\": \"Summary\"\n      }]\n    }\n  }]\n}"
+						},
+						"url": {
+							"raw": "{{providerURL_0_5_x}}/Patient/$gpc.getcarerecord",
+							"host": [
+								"{{providerURL_0_5_x}}"
+							],
+							"path": [
+								"Patient",
+								"$gpc.getcarerecord"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access Record HTML (Immunisations)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1047beb4-6b45-4b2f-aec8-7a1bdc65267c",
+								"type": "text/javascript",
+								"exec": [
+									"// Get patient NHS Number from environment variables",
+									"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": \"https://authorize.fhir.nhs.net/token\",",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_record\": {",
+									"    \"resourceType\": \"Patient\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"http://fhir.nhs.net/Id/nhs-number\",",
+									"        \"value\": patient_nhs_number",
+									"      }",
+									"    ]",
+									"  },",
+									"  \"requested_scope\": \"patient/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"http://fhir.nhs.net/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"practitionerRole\": [",
+									"      {",
+									"        \"role\": {",
+									"          \"coding\": [",
+									"            {",
+									"              \"system\": \"http://fhir.nhs.net/ValueSet/sds-job-role-name-1\",",
+									"              \"code\": \"AssuranceJobRole\"",
+									"            }",
+									"          ]",
+									"        }",
+									"      }",
+									"    ],",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"http://fhir.nhs.net/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      }",
+									"    ],",
+									"    \"name\": {",
+									"      \"family\": [",
+									"        \"Demonstrator\"",
+									"      ],",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json+fhir"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:operation:gpc.getcarerecord"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json+fhir"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [{\n    \"name\": \"patientNHSNumber\",\n    \"valueIdentifier\": {\n      \"system\": \"http://fhir.nhs.net/Id/nhs-number\",\n      \"value\": \"{{patient_nhs_number}}\"\n    }\n  },\n  {\n    \"name\": \"recordSection\",\n    \"valueCodeableConcept\": {\n      \"coding\": [{\n        \"system\": \"http://fhir.nhs.net/ValueSet/gpconnect-record-section-1\",\n        \"code\": \"IMM\",\n        \"display\": \"Immunisation\"\n      }]\n    }\n  }]\n}"
+						},
+						"url": {
+							"raw": "{{providerURL_0_5_x}}/Patient/$gpc.getcarerecord",
+							"host": [
+								"{{providerURL_0_5_x}}"
+							],
+							"path": [
+								"Patient",
+								"$gpc.getcarerecord"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Foundations",
+			"item": [
+				{
+					"name": "GET conformance profile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "215f799f-41f0-4814-bbd8-497a4da56a18",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"organization/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:read:metadata-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/metadata",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"metadata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find a patient",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6057b508-33f5-485e-9adb-4e2ad2f90ba7",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:search:patient-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Patient?identifier=https://fhir.nhs.uk/Id/nhs-number%7C{{patient_nhs_number}}",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Patient"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "https://fhir.nhs.uk/Id/nhs-number%7C{{patient_nhs_number}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read a patient",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bfad826e-281c-45fe-be4a-9e980177d95a",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:read:patient-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Patient/2",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Patient",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find a practitioner",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7800396c-fe66-47c8-b121-cfaa67f2b48b",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"organization/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:search:practitioner-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Practitioner?identifier=https://fhir.nhs.uk/Id/sds-user-id%7CG22345655",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Practitioner"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "https://fhir.nhs.uk/Id/sds-user-id%7CG22345655"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read a practitioner",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "158998dc-4e9b-4b84-a887-18aad275ec07",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"organization/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:read:practitioner-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Practitioner/2",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Practitioner",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find an organization",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b2ce5d82-3ef8-4c17-ac58-0012a65b3cb5",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"organization/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:search:organization-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Organization?identifier=https://fhir.nhs.uk/Id/ods-organization-code%7CGPC001",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Organization"
+							],
+							"query": [
+								{
+									"key": "identifier",
+									"value": "https://fhir.nhs.uk/Id/ods-organization-code%7CGPC001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read an organization",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f258394d-57a4-49de-9cd2-41c1beb3b570",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"organization/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:read:organization-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Organization/1",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Organization",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read a location",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a522440d-450a-4c67-b2a9-f709660afcf2",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"organization/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:read:location-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Location/1",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Location",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register a patient",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7423bb96-63e8-48f3-90a4-faa9593332f4",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.write\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:operation:gpc.registerpatient-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"resourceType\": \"Parameters\",\r\n  \"parameter\": [{\r\n    \"name\": \"registerPatient\",\r\n    \"resource\": {\r\n      \"resourceType\": \"Patient\",\r\n      \"meta\": {\r\n        \"profile\": [\"https://fhir.nhs.uk/StructureDefinition/CareConnect-GPC-Patient-1\"]\r\n      },\r\n      \"identifier\": [{\r\n        \"extension\": [{\r\n          \"url\": \"https://fhir.nhs.uk/StructureDefinition/Extension-CareConnect-GPC-NHSNumberVerificationStatus-1\",\r\n          \"valueCodeableConcept\": {\r\n            \"coding\": [{\r\n              \"system\": \"https://fhir.nhs.uk/CareConnect-NHSNumberVerificationStatus-1\",\r\n              \"code\": \"01\"\r\n            }]\r\n          }\r\n        }],\r\n        \"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\r\n        \"value\": \"9476719931\"\r\n      }],\r\n      \"active\": true,\r\n      \"name\": [{\r\n        \"use\": \"official\",\r\n        \"family\": [\"Smith\"],\r\n        \"given\": [\"Mike\"]\r\n      }],\r\n      \"gender\": \"male\",\r\n      \"birthDate\": \"1976-01-10\"\r\n    }\r\n  }]\r\n}"
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Patient/$gpc.registerpatient",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Patient",
+								"$gpc.registerpatient"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointments",
+			"item": [
+				{
+					"name": "Amend an appointment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3ab82645-be00-4134-b20b-6ef95118d2df",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.write\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:update:appointment-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resourceType\": \"Appointment\",\n    \"id\": \"1\",\n    \"meta\": {\n        \"versionId\": \"1528070470000\",\n        \"lastUpdated\": \"2018-06-04T01:01:10.000+01:00\",\n        \"profile\": [\n            \"https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-Appointment-1\"\n        ]\n    },\n    \"identifier\": [\n        {\n            \"system\": \"https://fhir.nhs.uk/Id/gpconnect-appointment-identifier\",\n            \"value\": \"1\"\n        }\n    ],\n    \"status\": \"booked\",\n    \"appointmentType\": {\n        \"coding\": [\n            {\n                \"system\": \"http://hl7.org/fhir/ValueSet/c80-practice-codes\",\n                \"code\": \"408443003\",\n                \"display\": \"General medical practice\"\n            }\n        ],\n        \"text\": \"In-person\"\n    },\n    \"priority\": 0,\n    \"description\": \"A appointment to discuss test data, updated by postman\",\n    \"start\": \"2018-06-05T09:00:00.000+01:00\",\n    \"end\": \"2018-06-05T09:10:00.000+01:00\",\n    \"minutesDuration\": 10,\n    \"slot\": [\n        {\n            \"reference\": \"Slot/6056\"\n        }\n    ],\n    \"participant\": [\n        {\n            \"actor\": {\n                \"reference\": \"Patient/2\"\n            },\n            \"status\": \"accepted\"\n        },\n        {\n            \"actor\": {\n                \"reference\": \"Location/1\"\n            },\n            \"status\": \"accepted\"\n        },\n        {\n            \"actor\": {\n                \"reference\": \"Practitioner/2\"\n            },\n            \"status\": \"accepted\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Appointment/1",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Appointment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a patients appointments",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "233a195b-e665-47c8-b316-2e0c4d56d07c",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									"",
+									"",
+									"// Setup search dates",
+									"var paramStartTime = new Date();",
+									"var paramEndTime = new Date(currentTime.getTime() + 259200000); // 3 days after current date",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_search_start_date\", paramStartTime.toISOString().split('T')[0]);",
+									"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString().split('T')[0]);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:search:patient_appointments-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Patient/2/Appointment?start=ge{{pre_request_script_generated_search_start_date}}&start=le{{pre_request_script_generated_search_end_date}}",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Patient",
+								"2",
+								"Appointment"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "ge{{pre_request_script_generated_search_start_date}}"
+								},
+								{
+									"key": "start",
+									"value": "le{{pre_request_script_generated_search_end_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search for free slots",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "8a67779f-9dc7-4f2e-87f1-df67942e09ef",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									"",
+									"",
+									"// Setup search dates",
+									"var paramStartTime = new Date();",
+									"var paramEndTime = new Date(currentTime.getTime() + 259200000); // 3 days after current date",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_search_start_date\", paramStartTime.toISOString());",
+									"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString());",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:search:slot-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Slot?start=ge{{pre_request_script_generated_search_start_date}}&end=le{{pre_request_script_generated_search_end_date}}&status=free&_include=Slot:schedule&_include:recurse=Schedule:actor:Practitioner&_include:recurse=Schedule:actor:Location&searchFilter=https://fhir.nhs.uk/Id/ods-organization-code%7CGPC001&searchFilter=https://fhir.nhs.uk/STU3/ValueSet/GPConnect-OrganisationType-1%7Curgent care",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Slot"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "ge{{pre_request_script_generated_search_start_date}}"
+								},
+								{
+									"key": "end",
+									"value": "le{{pre_request_script_generated_search_end_date}}"
+								},
+								{
+									"key": "status",
+									"value": "free"
+								},
+								{
+									"key": "_include",
+									"value": "Slot:schedule"
+								},
+								{
+									"key": "_include:recurse",
+									"value": "Schedule:actor:Practitioner"
+								},
+								{
+									"key": "_include:recurse",
+									"value": "Schedule:actor:Location"
+								},
+								{
+									"key": "searchFilter",
+									"value": "https://fhir.nhs.uk/Id/ods-organization-code%7CGPC001"
+								},
+								{
+									"key": "searchFilter",
+									"value": "https://fhir.nhs.uk/STU3/ValueSet/GPConnect-OrganisationType-1%7Curgent care"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read an appointment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2ec45c1e-683f-4b86-b147-d2e91f467280",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:read:appointment-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Appointment/2",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Appointment",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book an appointment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "302bf146-f7c2-48e4-aa60-6ed39ce3ec24",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.write\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:create:appointment-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceType\": \"Appointment\",\n  \"meta\": {\n    \"profile\": [\"https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-Appointment-1\"]\n  },\n  \"contained\": [{\n    \"resourceType\": \"Organization\",\n    \"id\": \"1\",\n    \"meta\": {\n      \"profile\": [\"https://fhir.nhs.uk/StructureDefinition/CareConnect-GPC-Organization-1\"]\n    },\n    \"identifier\": [{\n      \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",\n      \"value\": \"GPC002\"\n    }],\n    \"name\": \"GP Connect Test Organization\",\n    \"telecom\": [{\n      \"system\": \"phone\",\n      \"value\": \"01823938938\",\n      \"use\": \"temp\"\n    }]\n  }],\n  \"extension\": [\n  {\n    \"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-BookingOrganisation-1\",\n    \"valueReference\": {\n      \"reference\": \"#1\"\n    }\n  }],\n  \"status\": \"booked\",\n  \"description\": \"tests description\",\n  \"start\": \"2018-03-06T09:10:01.000+00:00\",\n  \"end\": \"2018-03-06T09:20:01.000+00:00\",\n  \"slot\": [{\n    \"reference\": \"Slot/6398\"\n  }],\n  \"participant\": [{\n    \"actor\": {\n      \"reference\": \"Patient/2\"\n    },\n    \"status\": \"accepted\"\n  },\n  {\n    \"actor\": {\n      \"reference\": \"Location/1\"\n    },\n    \"status\": \"accepted\"\n  },\n  {\n    \"actor\": {\n      \"reference\": \"Practitioner/2\"\n    },\n    \"status\": \"accepted\"\n  }]\n}"
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Appointment",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Appointment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel an appointment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3da3dbbc-6dc5-4891-9d2b-40a8f75cad3e",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.write\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:rest:update:appointment-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"resourceType\": \"Appointment\",\n\t\"id\": \"2\",\n\t\"meta\": {\n\t\t\"versionId\": \"1528070470000\",\n\t\t\"lastUpdated\": \"2018-06-04T01:01:10.000+01:00\",\n\t\t\"profile\": [\"https://fhir.nhs.uk/STU3/StructureDefinition/GPConnect-Appointment-1\"]\n\t},\n\t\"extension\": [{\n\t\t\"url\": \"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-GPConnect-AppointmentCancellationReason-1\",\n\t\t\"valueString\": \"Cancellation Reason Test Text\"\n\t}],\n\t\"identifier\": [{\n\t\t\"system\": \"https://fhir.nhs.uk/Id/gpconnect-appointment-identifier\",\n\t\t\"value\": \"2\"\n\t}],\n\t\"status\": \"booked\",\n\t\"appointmentType\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://hl7.org/fhir/ValueSet/c80-practice-codes\",\n\t\t\t\"code\": \"408443003\",\n\t\t\t\"display\": \"General medical practice\"\n\t\t}],\n\t\t\"text\": \"In-person\"\n\t},\n\t\"priority\": 0,\n\t\"description\": \"A follow-up appointment for tests.\",\n\t\"start\": \"2018-06-05T09:10:00.000+01:00\",\n\t\"end\": \"2018-06-05T09:20:00.000+01:00\",\n\t\"minutesDuration\": 10,\n\t\"slot\": [{\n\t\t\"reference\": \"Slot/6057\"\n\t}],\n\t\"participant\": [{\n\t\t\"actor\": {\n\t\t\t\"reference\": \"Patient/2\"\n\t\t},\n\t\t\"status\": \"accepted\"\n\t},\n\t{\n\t\t\"actor\": {\n\t\t\t\"reference\": \"Location/1\"\n\t\t},\n\t\t\"status\": \"accepted\"\n\t},\n\t{\n\t\t\"actor\": {\n\t\t\t\"reference\": \"Practitioner/2\"\n\t\t},\n\t\t\"status\": \"accepted\"\n\t}]\n}"
+						},
+						"url": {
+							"raw": "{{providerURL_1_x_x}}/Appointment/2",
+							"host": [
+								"{{providerURL_1_x_x}}"
+							],
+							"path": [
+								"Appointment",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Access Record Structured",
+			"item": [
+				{
+					"name": "Access Record Structured (Allergies and Medications)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b44ddfcc-58fa-4774-8c1f-83268e5f3ee7",
+								"type": "text/javascript",
+								"exec": [
+									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
+									"",
+									"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+									"",
+									"// Construct the JWT token for the request",
+									"var currentTime = new Date();",
+									"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+									"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+									"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+									"",
+									"var header = {",
+									"  \"alg\": \"none\",",
+									"  \"typ\": \"JWT\"",
+									"};",
+									"",
+									"var payload = {",
+									"  \"iss\": \"http://gpconnect-postman-url\",",
+									"  \"sub\": \"1\",",
+									"  \"aud\": targetURI,",
+									"  \"exp\": jwtExpiryTime,",
+									"  \"iat\": jwtCreationTime,",
+									"  \"reason_for_request\": \"directcare\",",
+									"  \"requested_scope\": \"patient/*.read\",",
+									"  \"requesting_device\": {",
+									"    \"resourceType\": \"Device\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"Web Interface\",",
+									"        \"value\": \"Postman example consumer\"",
+									"      }",
+									"    ],",
+									"    \"model\": \"Postman\",",
+									"    \"version\": \"1.0\"",
+									"  },",
+									"  \"requesting_organization\": {",
+									"    \"resourceType\": \"Organization\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+									"        \"value\": requesting_organization_ODS_Code",
+									"      }",
+									"    ],",
+									"    \"name\": \"Postman Organization\"",
+									"  },",
+									"  \"requesting_practitioner\": {",
+									"    \"resourceType\": \"Practitioner\",",
+									"    \"id\": \"1\",",
+									"    \"identifier\": [",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+									"        \"value\": \"G13579135\"",
+									"      },",
+									"      {",
+									"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+									"        \"value\": \"111111111\"",
+									"      },",
+									"    ],",
+									"    \"name\": [{",
+									"      \"family\": \"Demonstrator\",",
+									"      \"given\": [",
+									"        \"GPConnect\"",
+									"      ],",
+									"      \"prefix\": [",
+									"        \"Mr\"",
+									"      ]",
+									"    }]",
+									"  }",
+									"};",
+									"",
+									"function base64url(source) {",
+									"  // Encode in classical base64",
+									"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+									"  // Remove padding equal characters",
+									"  encodedSource = encodedSource.replace(/=+$/, '');",
+									"  // Replace characters according to base64url specifications",
+									"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+									"  encodedSource = encodedSource.replace(/\\//g, '_');",
+									"  return encodedSource;",
+									"}",
+									"",
+									"// Encode the JWT data into the base64url encoded string",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+									"var encodedHeader = base64url(stringifiedHeader);",
+									"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+									"var encodedPayload = base64url(stringifiedPayload);",
+									"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+									"",
+									"// Set the environment variable used in the payload",
+									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Ssp-From",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-To",
+								"value": "200000000359"
+							},
+							{
+								"key": "Ssp-InteractionID",
+								"value": "urn:nhs:names:services:gpconnect:fhir:operation:gpc.getstructuredrecord-1"
+							},
+							{
+								"key": "Ssp-TraceID",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/fhir+json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{pre_request_script_generated_JWT}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"meta\": {\n\t\t\"profile\": [\"https://fhir.nhs.uk/STU3/OperationDefinition/GPConnect-GetStructuredRecord-Operation-1\"]\n\t},\n\t\"resourceType\": \"Parameters\",\n\t\"parameter\": [{\n\t\t\"name\": \"patientNHSNumber\",\n\t\t\"valueIdentifier\": {\n\t\t\t\"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n\t\t\t\"value\": \"{{patient_nhs_number}}\"\n\t\t}\n\t},\n\t{\n\t\t\"name\": \"includeAllergies\",\n\t\t\"part\": [{\n\t\t\t\"name\": \"includeResolvedAllergies\",\n\t\t\t\"valueBoolean\": true\n\t\t}]\n\t},\n\t{\n\t\t\"name\": \"includeMedication\",\n\t\t\"part\": [{\n\t\t\t\"name\": \"includePrescriptionIssues\",\n\t\t\t\"valueBoolean\": true\n\t\t},\n\t\t{\n\t\t\t\"name\": \"medicationDatePeriod\",\n\t\t\t\"valuePeriod\": {\n\t\t\t\t\"start\": \"2017-06-04\",\n\t\t\t\t\"end\": \"2018-06-19\"\n\t\t\t}\n\t\t}]\n\t}]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:19191/fhir/Patient/$gpc.getstructuredrecord",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "19191",
+							"path": [
+								"fhir",
+								"Patient",
+								"$gpc.getstructuredrecord"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
