@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a03496b9-8549-48cf-a6a6-80e31579299c",
+		"_postman_id": "507d0064-deda-47a1-a166-e747d48627da",
 		"name": "GP Connect",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,7 +15,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "913855c4-778b-4924-b414-ec3de45cbfa7",
-								"type": "text/javascript",
 								"exec": [
 									"// Get patient NHS Number from environment variables",
 									"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
@@ -129,7 +128,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -142,11 +142,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -189,7 +189,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "1047beb4-6b45-4b2f-aec8-7a1bdc65267c",
-								"type": "text/javascript",
 								"exec": [
 									"// Get patient NHS Number from environment variables",
 									"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
@@ -303,7 +302,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -316,11 +316,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -368,7 +368,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "215f799f-41f0-4814-bbd8-497a4da56a18",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -461,7 +460,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -474,11 +474,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -516,7 +516,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "6057b508-33f5-485e-9adb-4e2ad2f90ba7",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -609,7 +608,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -622,11 +622,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -670,7 +670,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "bfad826e-281c-45fe-be4a-9e980177d95a",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -763,7 +762,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -776,11 +776,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -819,7 +819,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "7800396c-fe66-47c8-b121-cfaa67f2b48b",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -912,7 +911,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -925,11 +925,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -973,7 +973,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "158998dc-4e9b-4b84-a887-18aad275ec07",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -1066,7 +1065,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1079,11 +1079,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -1122,7 +1122,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "b2ce5d82-3ef8-4c17-ac58-0012a65b3cb5",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -1215,7 +1214,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1228,11 +1228,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -1276,7 +1276,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "f258394d-57a4-49de-9cd2-41c1beb3b570",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -1369,7 +1368,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1382,11 +1382,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -1425,7 +1425,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "a522440d-450a-4c67-b2a9-f709660afcf2",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -1518,7 +1517,8 @@
 									"// Set the environment variable used in the payload",
 									"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -1531,11 +1531,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -1680,11 +1680,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -1692,7 +1692,7 @@
 							},
 							{
 								"key": "Ssp-TraceID",
-								"value": "{{$guid}}"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1838,11 +1838,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -1850,7 +1850,7 @@
 							},
 							{
 								"key": "Ssp-TraceID",
-								"value": "{{$guid}}"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1885,7 +1885,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "233a195b-e665-47c8-b316-2e0c4d56d07c",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -1987,7 +1986,8 @@
 									"pm.environment.set(\"pre_request_script_generated_search_start_date\", paramStartTime.toISOString().split('T')[0]);",
 									"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString().split('T')[0]);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2000,11 +2000,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -2054,7 +2054,6 @@
 							"listen": "prerequest",
 							"script": {
 								"id": "8a67779f-9dc7-4f2e-87f1-df67942e09ef",
-								"type": "text/javascript",
 								"exec": [
 									"var targetURI = pm.environment.get(\"providerURL_1_x_x\");",
 									"",
@@ -2156,7 +2155,8 @@
 									"pm.environment.set(\"pre_request_script_generated_search_start_date\", paramStartTime.toISOString());",
 									"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString());",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -2169,11 +2169,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -2351,11 +2351,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -2500,11 +2500,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -2652,11 +2652,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
@@ -2810,11 +2810,11 @@
 							},
 							{
 								"key": "Ssp-From",
-								"value": "200000000359"
+								"value": "{{ssp-from}}"
 							},
 							{
 								"key": "Ssp-To",
-								"value": "200000000359"
+								"value": "{{ssp-to}}"
 							},
 							{
 								"key": "Ssp-InteractionID",
