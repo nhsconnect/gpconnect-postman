@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "v0.5.0",
+			"name": "v0.7.2",
 			"item": [
 				{
 					"name": "Foundations",
@@ -169,9 +169,9 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "{{providerURL_0_5_x}}/metadata",
+									"raw": "{{providerURL_0_x_x}}/metadata",
 									"host": [
-										"{{providerURL_0_5_x}}"
+										"{{providerURL_0_x_x}}"
 									],
 									"path": [
 										"metadata"
@@ -348,9 +348,9 @@
 									"raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [{\n    \"name\": \"patientNHSNumber\",\n    \"valueIdentifier\": {\n      \"system\": \"http://fhir.nhs.net/Id/nhs-number\",\n      \"value\": \"{{patient_nhs_number}}\"\n    }\n  },\n  {\n    \"name\": \"recordSection\",\n    \"valueCodeableConcept\": {\n      \"coding\": [{\n        \"system\": \"http://fhir.nhs.net/ValueSet/gpconnect-record-section-1\",\n        \"code\": \"SUM\",\n        \"display\": \"Summary\"\n      }]\n    }\n  }]\n}"
 								},
 								"url": {
-									"raw": "{{providerURL_0_5_x}}/Patient/$gpc.getcarerecord",
+									"raw": "{{providerURL_0_x_x}}/Patient/$gpc.getcarerecord",
 									"host": [
-										"{{providerURL_0_5_x}}"
+										"{{providerURL_0_x_x}}"
 									],
 									"path": [
 										"Patient",
@@ -522,9 +522,9 @@
 									"raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [{\n    \"name\": \"patientNHSNumber\",\n    \"valueIdentifier\": {\n      \"system\": \"http://fhir.nhs.net/Id/nhs-number\",\n      \"value\": \"{{patient_nhs_number}}\"\n    }\n  },\n  {\n    \"name\": \"recordSection\",\n    \"valueCodeableConcept\": {\n      \"coding\": [{\n        \"system\": \"http://fhir.nhs.net/ValueSet/gpconnect-record-section-1\",\n        \"code\": \"IMM\",\n        \"display\": \"Immunisation\"\n      }]\n    }\n  }]\n}"
 								},
 								"url": {
-									"raw": "{{providerURL_0_5_x}}/Patient/$gpc.getcarerecord",
+									"raw": "{{providerURL_0_x_x}}/Patient/$gpc.getcarerecord",
 									"host": [
-										"{{providerURL_0_5_x}}"
+										"{{providerURL_0_x_x}}"
 									],
 									"path": [
 										"Patient",
@@ -540,7 +540,7 @@
 			]
 		},
 		{
-			"name": "v1.2.2",
+			"name": "v1.2.3",
 			"item": [
 				{
 					"name": "Foundations",
