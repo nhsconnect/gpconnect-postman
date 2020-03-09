@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5073139d-be38-43bf-9233-3b6825dadf89",
+		"_postman_id": "990d26e3-0b89-4139-b05b-b2cdbcc08f84",
 		"name": "GP Connect",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -164,10 +164,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_0_x_x}}/metadata",
 									"host": [
@@ -181,6 +177,7 @@
 							"response": []
 						}
 					],
+					"protocolProfileBehavior": [],
 					"_postman_isSubFolder": true
 				},
 				{
@@ -535,12 +532,14 @@
 							"response": []
 						}
 					],
+					"protocolProfileBehavior": [],
 					"_postman_isSubFolder": true
 				}
-			]
+			],
+			"protocolProfileBehavior": []
 		},
 		{
-			"name": "v1.2.3",
+			"name": "v1.2.6",
 			"item": [
 				{
 					"name": "Foundations",
@@ -677,10 +676,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/metadata",
 									"host": [
@@ -825,10 +820,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Patient?identifier=https://fhir.nhs.uk/Id/nhs-number%7C{{patient_nhs_number}}",
 									"host": [
@@ -979,10 +970,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Patient/2",
 									"host": [
@@ -1128,10 +1115,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Practitioner?identifier=https://fhir.nhs.uk/Id/sds-user-id%7CG22345655",
 									"host": [
@@ -1282,10 +1265,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Practitioner/2",
 									"host": [
@@ -1431,10 +1410,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Organization?identifier=https://fhir.nhs.uk/Id/ods-organization-code%7CGPC001",
 									"host": [
@@ -1585,10 +1560,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Organization/1",
 									"host": [
@@ -1734,10 +1705,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Location/1",
 									"host": [
@@ -1905,6 +1872,7 @@
 							"response": []
 						}
 					],
+					"protocolProfileBehavior": [],
 					"_postman_isSubFolder": true
 				},
 				{
@@ -2204,10 +2172,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Patient/2/Appointment?start=ge{{pre_request_script_generated_search_start_date}}&start=le{{pre_request_script_generated_search_end_date}}",
 									"host": [
@@ -2373,10 +2337,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Slot?start=ge{{pre_request_script_generated_search_start_date}}&end=le{{pre_request_script_generated_search_end_date}}&status=free&_include=Slot:schedule&_include:recurse=Schedule:actor:Practitioner&_include:recurse=Schedule:actor:Location&searchFilter=https://fhir.nhs.uk/Id/ods-organization-code%7CGPC001&searchFilter=https://fhir.nhs.uk/STU3/ValueSet/GPConnect-OrganisationType-1%7Curgent care",
 									"host": [
@@ -2555,10 +2515,6 @@
 										"value": "Bearer {{pre_request_script_generated_JWT}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{providerURL_1_x_x}}/Appointment/2",
 									"host": [
@@ -2878,6 +2834,7 @@
 							"response": []
 						}
 					],
+					"protocolProfileBehavior": [],
 					"_postman_isSubFolder": true
 				},
 				{
@@ -3037,9 +2994,12 @@
 							"response": []
 						}
 					],
+					"protocolProfileBehavior": [],
 					"_postman_isSubFolder": true
 				}
-			]
+			],
+			"protocolProfileBehavior": []
 		}
-	]
+	],
+	"protocolProfileBehavior": []
 }
