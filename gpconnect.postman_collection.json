@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "990d26e3-0b89-4139-b05b-b2cdbcc08f84",
+		"_postman_id": "b00736da-d698-40df-a1f8-d6a2d6c357cf",
 		"name": "GP Connect",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -17,7 +17,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "913855c4-778b-4924-b414-ec3de45cbfa7",
+										"id": "15f3f84f-ed31-485f-ab18-b68c8aadfedb",
 										"exec": [
 											"// Get patient NHS Number from environment variables",
 											"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
@@ -189,7 +189,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "913855c4-778b-4924-b414-ec3de45cbfa7",
+										"id": "5b44e8aa-811d-4256-9eab-dfd9e8bf4d71",
 										"exec": [
 											"// Get patient NHS Number from environment variables",
 											"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
@@ -363,7 +363,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "1047beb4-6b45-4b2f-aec8-7a1bdc65267c",
+										"id": "44408c29-eecc-4f33-8a4c-a38663576f80",
 										"exec": [
 											"// Get patient NHS Number from environment variables",
 											"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
@@ -545,12 +545,12 @@
 					"name": "Foundations",
 					"item": [
 						{
-							"name": "Get conformance profile",
+							"name": "Get capability statement",
 							"event": [
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "215f799f-41f0-4814-bbd8-497a4da56a18",
+										"id": "74c0601c-543b-4b8c-90e1-f7f903c1ea6f",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -694,7 +694,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "6057b508-33f5-485e-9adb-4e2ad2f90ba7",
+										"id": "4298cda8-cf5c-46cd-b1fc-d066f629e175",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -844,7 +844,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "bfad826e-281c-45fe-be4a-9e980177d95a",
+										"id": "8ef40982-f723-4f6e-abf1-2f358457c0aa",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -989,7 +989,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "7800396c-fe66-47c8-b121-cfaa67f2b48b",
+										"id": "bb70a151-4914-43aa-bde1-40cab324210f",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1139,7 +1139,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "158998dc-4e9b-4b84-a887-18aad275ec07",
+										"id": "acb9fb64-cd30-4a95-b6ac-aa002dcbedd6",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1284,7 +1284,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "b2ce5d82-3ef8-4c17-ac58-0012a65b3cb5",
+										"id": "9e86cc72-503a-4405-ad86-ac9ead85e3c5",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1434,7 +1434,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "f258394d-57a4-49de-9cd2-41c1beb3b570",
+										"id": "04a4de08-5c9c-4bd7-9b86-f5553eb668b8",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1579,7 +1579,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "a522440d-450a-4c67-b2a9-f709660afcf2",
+										"id": "8ee0ff44-3288-4455-b16c-3c5027c4aaa3",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1724,7 +1724,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "7423bb96-63e8-48f3-90a4-faa9593332f4",
+										"id": "8de5b139-d8b2-4d56-a480-1bd1705185c1",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1884,7 +1884,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "3ab82645-be00-4134-b20b-6ef95118d2df",
+										"id": "f3382e64-b0d4-48ae-bc41-f1c1b8c5df9a",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2037,7 +2037,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "233a195b-e665-47c8-b316-2e0c4d56d07c",
+										"id": "e3b288c2-a1da-4c4b-9d14-2e2e555a9fb3",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2202,7 +2202,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "8a67779f-9dc7-4f2e-87f1-df67942e09ef",
+										"id": "246b5810-9ef0-4559-9322-dd0516ae7384",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2389,7 +2389,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "2ec45c1e-683f-4b86-b147-d2e91f467280",
+										"id": "6d8e8fb5-da15-433b-8e0b-8d18b6102697",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2534,7 +2534,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "302bf146-f7c2-48e4-aa60-6ed39ce3ec24",
+										"id": "f88222ba-b125-4e2c-b502-c3f8e3dadc28",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2686,7 +2686,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "3da3dbbc-6dc5-4891-9d2b-40a8f75cad3e",
+										"id": "33b9edf3-87dc-473d-ab0b-f296749b39c7",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2841,12 +2841,156 @@
 					"name": "Access Record Structured",
 					"item": [
 						{
+							"name": "Get structured capability statement",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e361be52-6f8f-4b30-bdd0-526ca9590672",
+										"exec": [
+											"var targetURI = pm.environment.get(\"providerURL_1_x_x_structured\");",
+											"",
+											"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+											"",
+											"// Construct the JWT token for the request",
+											"var currentTime = new Date();",
+											"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+											"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+											"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+											"",
+											"var header = {",
+											"  \"alg\": \"none\",",
+											"  \"typ\": \"JWT\"",
+											"};",
+											"",
+											"var payload = {",
+											"  \"iss\": \"http://gpconnect-postman-url\",",
+											"  \"sub\": \"1\",",
+											"  \"aud\": targetURI,",
+											"  \"exp\": jwtExpiryTime,",
+											"  \"iat\": jwtCreationTime,",
+											"  \"reason_for_request\": \"directcare\",",
+											"  \"requested_scope\": \"organization/*.read\",",
+											"  \"requesting_device\": {",
+											"    \"resourceType\": \"Device\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"Web Interface\",",
+											"        \"value\": \"Postman example consumer\"",
+											"      }",
+											"    ],",
+											"    \"model\": \"Postman\",",
+											"    \"version\": \"1.0\"",
+											"  },",
+											"  \"requesting_organization\": {",
+											"    \"resourceType\": \"Organization\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+											"        \"value\": requesting_organization_ODS_Code",
+											"      }",
+											"    ],",
+											"    \"name\": \"Postman Organization\"",
+											"  },",
+											"  \"requesting_practitioner\": {",
+											"    \"resourceType\": \"Practitioner\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+											"        \"value\": \"G13579135\"",
+											"      },",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+											"        \"value\": \"111111111\"",
+											"      },",
+											"    ],",
+											"    \"name\": [{",
+											"      \"family\": \"Demonstrator\",",
+											"      \"given\": [",
+											"        \"GPConnect\"",
+											"      ],",
+											"      \"prefix\": [",
+											"        \"Mr\"",
+											"      ]",
+											"    }]",
+											"  }",
+											"};",
+											"",
+											"function base64url(source) {",
+											"  // Encode in classical base64",
+											"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+											"  // Remove padding equal characters",
+											"  encodedSource = encodedSource.replace(/=+$/, '');",
+											"  // Replace characters according to base64url specifications",
+											"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+											"  encodedSource = encodedSource.replace(/\\//g, '_');",
+											"  return encodedSource;",
+											"}",
+											"",
+											"// Encode the JWT data into the base64url encoded string",
+											"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+											"var encodedHeader = base64url(stringifiedHeader);",
+											"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+											"var encodedPayload = base64url(stringifiedPayload);",
+											"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+											"",
+											"// Set the environment variable used in the payload",
+											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Ssp-From",
+										"value": "{{ssp-from}}"
+									},
+									{
+										"key": "Ssp-To",
+										"value": "{{ssp-to}}"
+									},
+									{
+										"key": "Ssp-InteractionID",
+										"value": "urn:nhs:names:services:gpconnect:structured:fhir:rest:read:metadata-1"
+									},
+									{
+										"key": "Ssp-TraceID",
+										"value": "{{$guid}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{pre_request_script_generated_JWT}}"
+									}
+								],
+								"url": {
+									"raw": "{{providerURL_1_x_x_structured}}/metadata",
+									"host": [
+										"{{providerURL_1_x_x_structured}}"
+									],
+									"path": [
+										"metadata"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Access Record Structured (Allergies and Medications)",
 							"event": [
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "b44ddfcc-58fa-4774-8c1f-83268e5f3ee7",
+										"id": "b1e583c6-6b0b-462a-bb72-9be8206f3174",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_structured\");",
 											"",
