@@ -2301,8 +2301,8 @@
 											"var paramEndTime = new Date(currentTime.getTime() + 259200000); // 3 days after current date",
 											"",
 											"// Set the environment variable used in the payload",
-											"pm.environment.set(\"pre_request_script_generated_search_start_date\", paramStartTime.toISOString());",
-											"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString());",
+											"pm.environment.set(\"pre_request_script_generated_search_start_date\", paramStartTime.toISOString().split('T')[0]);",
+											"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString().split('T')[0]);",
 											""
 										],
 										"type": "text/javascript"
