@@ -3122,7 +3122,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n  {\n\t\"name\": \"patientNHSNumber\",\n\t\"valueIdentifier\": {\n\t\t\"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n\t    \"value\": \"9658218873\"\n\t}\n  },\n  {\n    \"name\": \"includeAllergies\",\n    \"part\": [ {\n\t\t\"name\": \"includeResolvedAllergies\",\n\t    \"valueBoolean\": true\n\t}\n\t]\n  },\n  {\n\t\"name\": \"includeMedication\",\n\t\"part\": [\n\t{\n\t\t\"name\": \"includePrescriptionIssues\",\n\t    \"valueBoolean\": true\n\t},\n\t{\n\t\t\"name\": \"medicationSearchFromDate\",\n\t    \"valueDate\": \"1980-06-05\"\n\t}\n\t]\n  }\n  ]\n}\n\n\n"
+									"raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n  {\n\t\"name\": \"patientNHSNumber\",\n\t\"valueIdentifier\": {\n\t\t\"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n\t    \"value\": \"{{patient_nhs_number}}\"\n\t}\n  },\n  {\n    \"name\": \"includeAllergies\",\n    \"part\": [ {\n\t\t\"name\": \"includeResolvedAllergies\",\n\t    \"valueBoolean\": true\n\t}\n\t]\n  },\n  {\n\t\"name\": \"includeMedication\",\n\t\"part\": [\n\t{\n\t\t\"name\": \"includePrescriptionIssues\",\n\t    \"valueBoolean\": true\n\t},\n\t{\n\t\t\"name\": \"medicationSearchFromDate\",\n\t    \"valueDate\": \"1980-06-05\"\n\t}\n\t]\n  }\n  ]\n}\n\n\n"
 								},
 								"url": {
 									"raw": "{{providerURL_1_x_x_structured}}/Patient/$gpc.getstructuredrecord",
