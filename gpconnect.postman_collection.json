@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b00736da-d698-40df-a1f8-d6a2d6c357cf",
+		"_postman_id": "43332986-6aeb-463c-872e-cd34bd864d4a",
 		"name": "GP Connect",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -17,7 +17,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "15f3f84f-ed31-485f-ab18-b68c8aadfedb",
+										"type": "text/javascript",
 										"exec": [
 											"// Get patient NHS Number from environment variables",
 											"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
@@ -132,7 +132,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "9336a496-906b-4aac-889b-efbc99fa1383"
 									}
 								}
 							],
@@ -189,7 +189,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "5b44e8aa-811d-4256-9eab-dfd9e8bf4d71",
+										"type": "text/javascript",
 										"exec": [
 											"// Get patient NHS Number from environment variables",
 											"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
@@ -304,7 +304,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "159b1fe4-0d2c-43c0-a865-a84f2e8c33bb"
 									}
 								}
 							],
@@ -363,7 +363,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "44408c29-eecc-4f33-8a4c-a38663576f80",
+										"type": "text/javascript",
 										"exec": [
 											"// Get patient NHS Number from environment variables",
 											"var patient_nhs_number = pm.environment.get(\"patient_nhs_number\");",
@@ -478,7 +478,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "6594334b-9db2-49a5-94cb-c2c3eecdc5a4"
 									}
 								}
 							],
@@ -550,7 +550,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "74c0601c-543b-4b8c-90e1-f7f903c1ea6f",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -644,7 +644,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "7e6cd13b-f00c-4d1e-b6c0-608cbbe05d0d"
 									}
 								}
 							],
@@ -694,7 +694,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "4298cda8-cf5c-46cd-b1fc-d066f629e175",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -788,7 +788,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "1b0b6188-774e-4710-b586-898f42dbc289"
 									}
 								}
 							],
@@ -844,7 +844,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "8ef40982-f723-4f6e-abf1-2f358457c0aa",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -938,7 +938,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "076fe18a-2de2-4cef-8326-e933a5072a47"
 									}
 								}
 							],
@@ -989,7 +989,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "bb70a151-4914-43aa-bde1-40cab324210f",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1083,7 +1083,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "74c550d7-53b9-4cc5-93c7-13d12d22b8fa"
 									}
 								}
 							],
@@ -1139,7 +1139,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "acb9fb64-cd30-4a95-b6ac-aa002dcbedd6",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1233,7 +1233,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "eaf76bdb-9da7-4e54-8d87-68a022c7fcb6"
 									}
 								}
 							],
@@ -1284,7 +1284,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "9e86cc72-503a-4405-ad86-ac9ead85e3c5",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1378,7 +1378,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "5ce45d55-902c-48f7-85a7-86145d3fd5a2"
 									}
 								}
 							],
@@ -1434,7 +1434,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "04a4de08-5c9c-4bd7-9b86-f5553eb668b8",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1528,7 +1528,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "14704478-6e94-43bf-a6ed-6f56130ab1ba"
 									}
 								}
 							],
@@ -1579,7 +1579,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "8ee0ff44-3288-4455-b16c-3c5027c4aaa3",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1673,7 +1673,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "ef0acf8c-f2a8-4036-bd68-1c1d9fdc3c05"
 									}
 								}
 							],
@@ -1724,7 +1724,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "8de5b139-d8b2-4d56-a480-1bd1705185c1",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1818,7 +1818,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "1a945a35-c5c7-4f7b-8358-4913238d3fa3"
 									}
 								}
 							],
@@ -1884,7 +1884,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "f3382e64-b0d4-48ae-bc41-f1c1b8c5df9a",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -1978,7 +1978,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "d513de06-1567-462c-baa3-dcb9beee6376"
 									}
 								}
 							],
@@ -2037,7 +2037,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "e3b288c2-a1da-4c4b-9d14-2e2e555a9fb3",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2140,7 +2140,7 @@
 											"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString().split('T')[0]);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "2a9be9a0-f3cb-4d97-8576-f3764b7281fb"
 									}
 								}
 							],
@@ -2202,7 +2202,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "246b5810-9ef0-4559-9322-dd0516ae7384",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2305,7 +2305,7 @@
 											"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString().split('T')[0]);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "afb4ce02-243d-48b3-b88d-660250cfbaf4"
 									}
 								}
 							],
@@ -2389,7 +2389,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "6d8e8fb5-da15-433b-8e0b-8d18b6102697",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2483,7 +2483,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "da4b9c85-2d94-4c6d-b0f6-51bcf7f66bb1"
 									}
 								}
 							],
@@ -2534,7 +2534,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "f88222ba-b125-4e2c-b502-c3f8e3dadc28",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2628,7 +2628,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "d349e04f-3e20-44d0-914c-dc9991d5b54d"
 									}
 								}
 							],
@@ -2686,7 +2686,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "33b9edf3-87dc-473d-ab0b-f296749b39c7",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_appointments\");",
 											"",
@@ -2780,7 +2780,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "421c9ffa-b119-4595-8a4a-b81489d50b9e"
 									}
 								}
 							],
@@ -2846,7 +2846,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "e361be52-6f8f-4b30-bdd0-526ca9590672",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_structured\");",
 											"",
@@ -2940,7 +2940,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "a43bb7b0-61f7-48ca-bf15-d9472f4718ad"
 									}
 								}
 							],
@@ -2990,7 +2990,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "b1e583c6-6b0b-462a-bb72-9be8206f3174",
+										"type": "text/javascript",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_x_x_structured\");",
 											"",
@@ -3084,7 +3084,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"type": "text/javascript"
+										"id": "824bed75-643a-4bf1-962d-50b6d85df884"
 									}
 								}
 							],
