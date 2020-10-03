@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "43332986-6aeb-463c-872e-cd34bd864d4a",
+		"_postman_id": "b67f7dcc-230d-4503-a4a6-10e431fe3b71",
 		"name": "GP Connect",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -132,7 +132,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "9336a496-906b-4aac-889b-efbc99fa1383"
+										"id": "f66b687c-6a5d-4070-b3d1-2e8280e409b2"
 									}
 								}
 							],
@@ -304,7 +304,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "159b1fe4-0d2c-43c0-a865-a84f2e8c33bb"
+										"id": "43a19254-0f52-4700-ad3d-e8f173cbca76"
 									}
 								}
 							],
@@ -478,7 +478,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "6594334b-9db2-49a5-94cb-c2c3eecdc5a4"
+										"id": "62e0edf7-6d14-4b32-9544-9875927b3575"
 									}
 								}
 							],
@@ -644,7 +644,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "7e6cd13b-f00c-4d1e-b6c0-608cbbe05d0d"
+										"id": "c147d173-e2e5-4122-9b5c-6b1fff7a695e"
 									}
 								}
 							],
@@ -788,7 +788,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "1b0b6188-774e-4710-b586-898f42dbc289"
+										"id": "4c197c4d-5a26-4329-a60e-8d2032dfd774"
 									}
 								}
 							],
@@ -938,7 +938,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "076fe18a-2de2-4cef-8326-e933a5072a47"
+										"id": "040e044b-8cd7-4cc7-a348-061f28a66607"
 									}
 								}
 							],
@@ -1083,7 +1083,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "74c550d7-53b9-4cc5-93c7-13d12d22b8fa"
+										"id": "7b4d7516-1305-403e-88d8-169d7fcaaba4"
 									}
 								}
 							],
@@ -1233,7 +1233,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "eaf76bdb-9da7-4e54-8d87-68a022c7fcb6"
+										"id": "f435609f-768c-4514-9300-b09a75f428b0"
 									}
 								}
 							],
@@ -1378,7 +1378,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "5ce45d55-902c-48f7-85a7-86145d3fd5a2"
+										"id": "884121a3-1efc-466f-bdf3-9ff040e0814a"
 									}
 								}
 							],
@@ -1528,7 +1528,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "14704478-6e94-43bf-a6ed-6f56130ab1ba"
+										"id": "f02d593a-3be6-4084-b1b3-11080caf4a7d"
 									}
 								}
 							],
@@ -1673,7 +1673,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "ef0acf8c-f2a8-4036-bd68-1c1d9fdc3c05"
+										"id": "c61ecdb9-7595-4569-9f03-e8d174a68133"
 									}
 								}
 							],
@@ -1818,7 +1818,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "1a945a35-c5c7-4f7b-8358-4913238d3fa3"
+										"id": "320b9118-79c9-440f-ba53-d4d715640bfd"
 									}
 								}
 							],
@@ -1978,7 +1978,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "d513de06-1567-462c-baa3-dcb9beee6376"
+										"id": "e7925c43-8c15-461f-829c-c84b375c3dcf"
 									}
 								}
 							],
@@ -2140,7 +2140,7 @@
 											"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString().split('T')[0]);",
 											""
 										],
-										"id": "2a9be9a0-f3cb-4d97-8576-f3764b7281fb"
+										"id": "f7a7577b-c1c6-483b-affe-7e87bff554a5"
 									}
 								}
 							],
@@ -2305,7 +2305,7 @@
 											"pm.environment.set(\"pre_request_script_generated_search_end_date\", paramEndTime.toISOString().split('T')[0]);",
 											""
 										],
-										"id": "afb4ce02-243d-48b3-b88d-660250cfbaf4"
+										"id": "71a0d26f-d322-4c09-8813-6f6341fb3b98"
 									}
 								}
 							],
@@ -2483,7 +2483,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "da4b9c85-2d94-4c6d-b0f6-51bcf7f66bb1"
+										"id": "7679ff82-be85-4029-9cdd-fa098f761b3a"
 									}
 								}
 							],
@@ -2628,7 +2628,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "d349e04f-3e20-44d0-914c-dc9991d5b54d"
+										"id": "26ae3183-8600-41ec-8ec4-e2a039ae1dff"
 									}
 								}
 							],
@@ -2780,7 +2780,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "421c9ffa-b119-4595-8a4a-b81489d50b9e"
+										"id": "4026692d-8ba8-4181-bd9a-8a48fef22a81"
 									}
 								}
 							],
@@ -2846,7 +2846,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"type": "text/javascript",
+										"id": "be2a58a5-f101-414b-a271-65855d64bb32",
 										"exec": [
 											"var targetURI = pm.environment.get(\"providerURL_1_2_x_structured\");",
 											"",
@@ -2940,7 +2940,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "a43bb7b0-61f7-48ca-bf15-d9472f4718ad"
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -3084,7 +3084,7 @@
 											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
 											""
 										],
-										"id": "824bed75-643a-4bf1-962d-50b6d85df884"
+										"id": "e355673c-4aae-42f9-92f0-e3354511988a"
 									}
 								}
 							],
@@ -3128,6 +3128,1083 @@
 									"raw": "{{providerURL_1_2_x_structured}}/Patient/$gpc.getstructuredrecord",
 									"host": [
 										"{{providerURL_1_2_x_structured}}"
+									],
+									"path": [
+										"Patient",
+										"$gpc.getstructuredrecord"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": [],
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": []
+		},
+		{
+			"name": "v1.5",
+			"item": [
+				{
+					"name": "Access Document",
+					"item": [
+						{
+							"name": "Get documents capability statement",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "700aa1a8-a709-4865-8667-e7139835e6c4",
+										"exec": [
+											"var targetURI = pm.environment.get(\"providerURL_1_5_x_documents\");",
+											"",
+											"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+											"",
+											"// Construct the JWT token for the request",
+											"var currentTime = new Date();",
+											"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+											"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+											"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+											"",
+											"var header = {",
+											"  \"alg\": \"none\",",
+											"  \"typ\": \"JWT\"",
+											"};",
+											"",
+											"var payload = {",
+											"  \"iss\": \"http://gpconnect-postman-url\",",
+											"  \"sub\": \"1\",",
+											"  \"aud\": targetURI,",
+											"  \"exp\": jwtExpiryTime,",
+											"  \"iat\": jwtCreationTime,",
+											"  \"reason_for_request\": \"directcare\",",
+											"  \"requested_scope\": \"organization/*.read\",",
+											"  \"requesting_device\": {",
+											"    \"resourceType\": \"Device\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"Web Interface\",",
+											"        \"value\": \"Postman example consumer\"",
+											"      }",
+											"    ],",
+											"    \"model\": \"Postman\",",
+											"    \"version\": \"1.0\"",
+											"  },",
+											"  \"requesting_organization\": {",
+											"    \"resourceType\": \"Organization\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+											"        \"value\": requesting_organization_ODS_Code",
+											"      }",
+											"    ],",
+											"    \"name\": \"Postman Organization\"",
+											"  },",
+											"  \"requesting_practitioner\": {",
+											"    \"resourceType\": \"Practitioner\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+											"        \"value\": \"G13579135\"",
+											"      },",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+											"        \"value\": \"111111111\"",
+											"      },",
+											"    ],",
+											"    \"name\": [{",
+											"      \"family\": \"Demonstrator\",",
+											"      \"given\": [",
+											"        \"GPConnect\"",
+											"      ],",
+											"      \"prefix\": [",
+											"        \"Mr\"",
+											"      ]",
+											"    }]",
+											"  }",
+											"};",
+											"",
+											"function base64url(source) {",
+											"  // Encode in classical base64",
+											"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+											"  // Remove padding equal characters",
+											"  encodedSource = encodedSource.replace(/=+$/, '');",
+											"  // Replace characters according to base64url specifications",
+											"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+											"  encodedSource = encodedSource.replace(/\\//g, '_');",
+											"  return encodedSource;",
+											"}",
+											"",
+											"// Encode the JWT data into the base64url encoded string",
+											"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+											"var encodedHeader = base64url(stringifiedHeader);",
+											"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+											"var encodedPayload = base64url(stringifiedPayload);",
+											"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+											"",
+											"// Set the environment variable used in the payload",
+											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Ssp-From",
+										"value": "{{ssp-from}}"
+									},
+									{
+										"key": "Ssp-To",
+										"value": "{{ssp-to-1_5_x}}"
+									},
+									{
+										"key": "Ssp-InteractionID",
+										"value": "urn:nhs:names:services:gpconnect:documents:fhir:rest:read:metadata-1"
+									},
+									{
+										"key": "Ssp-TraceID",
+										"value": "{{$guid}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{pre_request_script_generated_JWT}}"
+									}
+								],
+								"url": {
+									"raw": "{{providerURL_1_5_x_documents}}/metadata",
+									"host": [
+										"{{providerURL_1_5_x_documents}}"
+									],
+									"path": [
+										"metadata"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Find a patient",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "3d4410b4-8ee7-48d2-aa6f-d5e9c0319160",
+										"exec": [
+											"var targetURI = pm.environment.get(\"providerURL_1_5_x_documents\");",
+											"",
+											"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+											"",
+											"// Construct the JWT token for the request",
+											"var currentTime = new Date();",
+											"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+											"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+											"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+											"",
+											"var header = {",
+											"  \"alg\": \"none\",",
+											"  \"typ\": \"JWT\"",
+											"};",
+											"",
+											"var payload = {",
+											"  \"iss\": \"http://gpconnect-postman-url\",",
+											"  \"sub\": \"1\",",
+											"  \"aud\": targetURI,",
+											"  \"exp\": jwtExpiryTime,",
+											"  \"iat\": jwtCreationTime,",
+											"  \"reason_for_request\": \"directcare\",",
+											"  \"requested_scope\": \"patient/*.read\",",
+											"  \"requesting_device\": {",
+											"    \"resourceType\": \"Device\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"Web Interface\",",
+											"        \"value\": \"Postman example consumer\"",
+											"      }",
+											"    ],",
+											"    \"model\": \"Postman\",",
+											"    \"version\": \"1.0\"",
+											"  },",
+											"  \"requesting_organization\": {",
+											"    \"resourceType\": \"Organization\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+											"        \"value\": requesting_organization_ODS_Code",
+											"      }",
+											"    ],",
+											"    \"name\": \"Postman Organization\"",
+											"  },",
+											"  \"requesting_practitioner\": {",
+											"    \"resourceType\": \"Practitioner\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+											"        \"value\": \"G13579135\"",
+											"      },",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+											"        \"value\": \"111111111\"",
+											"      },",
+											"    ],",
+											"    \"name\": [{",
+											"      \"family\": \"Demonstrator\",",
+											"      \"given\": [",
+											"        \"GPConnect\"",
+											"      ],",
+											"      \"prefix\": [",
+											"        \"Mr\"",
+											"      ]",
+											"    }]",
+											"  }",
+											"};",
+											"",
+											"function base64url(source) {",
+											"  // Encode in classical base64",
+											"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+											"  // Remove padding equal characters",
+											"  encodedSource = encodedSource.replace(/=+$/, '');",
+											"  // Replace characters according to base64url specifications",
+											"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+											"  encodedSource = encodedSource.replace(/\\//g, '_');",
+											"  return encodedSource;",
+											"}",
+											"",
+											"// Encode the JWT data into the base64url encoded string",
+											"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+											"var encodedHeader = base64url(stringifiedHeader);",
+											"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+											"var encodedPayload = base64url(stringifiedPayload);",
+											"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+											"",
+											"// Set the environment variable used in the payload",
+											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Ssp-From",
+										"value": "{{ssp-from}}"
+									},
+									{
+										"key": "Ssp-To",
+										"value": "{{ssp-to-1_5_x}}"
+									},
+									{
+										"key": "Ssp-InteractionID",
+										"value": "urn:nhs:names:services:gpconnect:documents:fhir:rest:search:patient-1"
+									},
+									{
+										"key": "Ssp-TraceID",
+										"value": "{{$guid}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{pre_request_script_generated_JWT}}"
+									}
+								],
+								"url": {
+									"raw": "{{providerURL_1_5_x_documents}}/Patient?identifier=https://fhir.nhs.uk/Id/nhs-number%7C{{patient_nhs_number_1_5_x}}",
+									"host": [
+										"{{providerURL_1_5_x_documents}}"
+									],
+									"path": [
+										"Patient"
+									],
+									"query": [
+										{
+											"key": "identifier",
+											"value": "https://fhir.nhs.uk/Id/nhs-number%7C{{patient_nhs_number_1_5_x}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search for a patient's documents",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "23a5d0c4-d453-462e-8992-f92200a5d983",
+										"exec": [
+											"var targetURI = pm.environment.get(\"providerURL_1_5_x_documents\");",
+											"",
+											"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+											"",
+											"// Construct the JWT token for the request",
+											"var currentTime = new Date();",
+											"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+											"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+											"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+											"",
+											"var header = {",
+											"  \"alg\": \"none\",",
+											"  \"typ\": \"JWT\"",
+											"};",
+											"",
+											"var payload = {",
+											"  \"iss\": \"http://gpconnect-postman-url\",",
+											"  \"sub\": \"1\",",
+											"  \"aud\": targetURI,",
+											"  \"exp\": jwtExpiryTime,",
+											"  \"iat\": jwtCreationTime,",
+											"  \"reason_for_request\": \"directcare\",",
+											"  \"requested_scope\": \"patient/*.read\",",
+											"  \"requesting_device\": {",
+											"    \"resourceType\": \"Device\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"Web Interface\",",
+											"        \"value\": \"Postman example consumer\"",
+											"      }",
+											"    ],",
+											"    \"model\": \"Postman\",",
+											"    \"version\": \"1.0\"",
+											"  },",
+											"  \"requesting_organization\": {",
+											"    \"resourceType\": \"Organization\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+											"        \"value\": requesting_organization_ODS_Code",
+											"      }",
+											"    ],",
+											"    \"name\": \"Postman Organization\"",
+											"  },",
+											"  \"requesting_practitioner\": {",
+											"    \"resourceType\": \"Practitioner\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+											"        \"value\": \"G13579135\"",
+											"      },",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+											"        \"value\": \"111111111\"",
+											"      },",
+											"    ],",
+											"    \"name\": [{",
+											"      \"family\": \"Demonstrator\",",
+											"      \"given\": [",
+											"        \"GPConnect\"",
+											"      ],",
+											"      \"prefix\": [",
+											"        \"Mr\"",
+											"      ]",
+											"    }]",
+											"  }",
+											"};",
+											"",
+											"function base64url(source) {",
+											"  // Encode in classical base64",
+											"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+											"  // Remove padding equal characters",
+											"  encodedSource = encodedSource.replace(/=+$/, '');",
+											"  // Replace characters according to base64url specifications",
+											"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+											"  encodedSource = encodedSource.replace(/\\//g, '_');",
+											"  return encodedSource;",
+											"}",
+											"",
+											"// Encode the JWT data into the base64url encoded string",
+											"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+											"var encodedHeader = base64url(stringifiedHeader);",
+											"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+											"var encodedPayload = base64url(stringifiedPayload);",
+											"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+											"",
+											"// Set the environment variable used in the payload",
+											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Ssp-From",
+										"value": "{{ssp-from}}"
+									},
+									{
+										"key": "Ssp-To",
+										"value": "{{ssp-to-1_5_x}}"
+									},
+									{
+										"key": "Ssp-InteractionID",
+										"value": "urn:nhs:names:services:gpconnect:documents:fhir:rest:search:documentreference-1"
+									},
+									{
+										"key": "Ssp-TraceID",
+										"value": "{{$guid}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{pre_request_script_generated_JWT}}"
+									}
+								],
+								"url": {
+									"raw": "{{providerURL_1_5_x_documents}}/Patient/2/DocumentReference?_include=DocumentReference:subject:Patient&_include=DocumentReference:custodian:Organization&_include=DocumentReference:author:Organization&_include=DocumentReference:author:Practitioner&_revinclude:recurse=PractitionerRole:practitioner",
+									"host": [
+										"{{providerURL_1_5_x_documents}}"
+									],
+									"path": [
+										"Patient",
+										"2",
+										"DocumentReference"
+									],
+									"query": [
+										{
+											"key": "_include",
+											"value": "DocumentReference:subject:Patient"
+										},
+										{
+											"key": "_include",
+											"value": "DocumentReference:custodian:Organization"
+										},
+										{
+											"key": "_include",
+											"value": "DocumentReference:author:Organization"
+										},
+										{
+											"key": "_include",
+											"value": "DocumentReference:author:Practitioner"
+										},
+										{
+											"key": "_revinclude:recurse",
+											"value": "PractitionerRole:practitioner"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve a document",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "477689fc-4691-4992-a0bc-5aae7fdef20d",
+										"exec": [
+											"var targetURI = pm.environment.get(\"providerURL_1_5_x_documents\");",
+											"",
+											"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+											"",
+											"// Construct the JWT token for the request",
+											"var currentTime = new Date();",
+											"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+											"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+											"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+											"",
+											"var header = {",
+											"  \"alg\": \"none\",",
+											"  \"typ\": \"JWT\"",
+											"};",
+											"",
+											"var payload = {",
+											"  \"iss\": \"http://gpconnect-postman-url\",",
+											"  \"sub\": \"1\",",
+											"  \"aud\": targetURI,",
+											"  \"exp\": jwtExpiryTime,",
+											"  \"iat\": jwtCreationTime,",
+											"  \"reason_for_request\": \"directcare\",",
+											"  \"requested_scope\": \"organization/*.read\",",
+											"  \"requesting_device\": {",
+											"    \"resourceType\": \"Device\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"Web Interface\",",
+											"        \"value\": \"Postman example consumer\"",
+											"      }",
+											"    ],",
+											"    \"model\": \"Postman\",",
+											"    \"version\": \"1.0\"",
+											"  },",
+											"  \"requesting_organization\": {",
+											"    \"resourceType\": \"Organization\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+											"        \"value\": requesting_organization_ODS_Code",
+											"      }",
+											"    ],",
+											"    \"name\": \"Postman Organization\"",
+											"  },",
+											"  \"requesting_practitioner\": {",
+											"    \"resourceType\": \"Practitioner\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+											"        \"value\": \"G13579135\"",
+											"      },",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+											"        \"value\": \"111111111\"",
+											"      },",
+											"    ],",
+											"    \"name\": [{",
+											"      \"family\": \"Demonstrator\",",
+											"      \"given\": [",
+											"        \"GPConnect\"",
+											"      ],",
+											"      \"prefix\": [",
+											"        \"Mr\"",
+											"      ]",
+											"    }]",
+											"  }",
+											"};",
+											"",
+											"function base64url(source) {",
+											"  // Encode in classical base64",
+											"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+											"  // Remove padding equal characters",
+											"  encodedSource = encodedSource.replace(/=+$/, '');",
+											"  // Replace characters according to base64url specifications",
+											"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+											"  encodedSource = encodedSource.replace(/\\//g, '_');",
+											"  return encodedSource;",
+											"}",
+											"",
+											"// Encode the JWT data into the base64url encoded string",
+											"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+											"var encodedHeader = base64url(stringifiedHeader);",
+											"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+											"var encodedPayload = base64url(stringifiedPayload);",
+											"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+											"",
+											"// Set the environment variable used in the payload",
+											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Ssp-From",
+										"value": "{{ssp-from}}"
+									},
+									{
+										"key": "Ssp-To",
+										"value": "{{ssp-to-1_5_x}}"
+									},
+									{
+										"key": "Ssp-InteractionID",
+										"value": "urn:nhs:names:services:gpconnect:documents:fhir:rest:read:binary-1"
+									},
+									{
+										"key": "Ssp-TraceID",
+										"value": "{{$guid}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{pre_request_script_generated_JWT}}"
+									}
+								],
+								"url": {
+									"raw": "{{providerURL_1_5_x_documents}}/Binary/07a6483f-732b-461e-86b6-edb665c45510",
+									"host": [
+										"{{providerURL_1_5_x_documents}}"
+									],
+									"path": [
+										"Binary",
+										"07a6483f-732b-461e-86b6-edb665c45510"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Access Record Structured",
+					"item": [
+						{
+							"name": "Get structured capability statement",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a25f8aba-4903-4ead-81b0-f01f81da6bb7",
+										"exec": [
+											"var targetURI = pm.environment.get(\"providerURL_1_5_x_structured\");",
+											"",
+											"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+											"",
+											"// Construct the JWT token for the request",
+											"var currentTime = new Date();",
+											"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+											"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+											"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+											"",
+											"var header = {",
+											"  \"alg\": \"none\",",
+											"  \"typ\": \"JWT\"",
+											"};",
+											"",
+											"var payload = {",
+											"  \"iss\": \"http://gpconnect-postman-url\",",
+											"  \"sub\": \"1\",",
+											"  \"aud\": targetURI,",
+											"  \"exp\": jwtExpiryTime,",
+											"  \"iat\": jwtCreationTime,",
+											"  \"reason_for_request\": \"directcare\",",
+											"  \"requested_scope\": \"organization/*.read\",",
+											"  \"requesting_device\": {",
+											"    \"resourceType\": \"Device\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"Web Interface\",",
+											"        \"value\": \"Postman example consumer\"",
+											"      }",
+											"    ],",
+											"    \"model\": \"Postman\",",
+											"    \"version\": \"1.0\"",
+											"  },",
+											"  \"requesting_organization\": {",
+											"    \"resourceType\": \"Organization\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+											"        \"value\": requesting_organization_ODS_Code",
+											"      }",
+											"    ],",
+											"    \"name\": \"Postman Organization\"",
+											"  },",
+											"  \"requesting_practitioner\": {",
+											"    \"resourceType\": \"Practitioner\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+											"        \"value\": \"G13579135\"",
+											"      },",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+											"        \"value\": \"111111111\"",
+											"      },",
+											"    ],",
+											"    \"name\": [{",
+											"      \"family\": \"Demonstrator\",",
+											"      \"given\": [",
+											"        \"GPConnect\"",
+											"      ],",
+											"      \"prefix\": [",
+											"        \"Mr\"",
+											"      ]",
+											"    }]",
+											"  }",
+											"};",
+											"",
+											"function base64url(source) {",
+											"  // Encode in classical base64",
+											"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+											"  // Remove padding equal characters",
+											"  encodedSource = encodedSource.replace(/=+$/, '');",
+											"  // Replace characters according to base64url specifications",
+											"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+											"  encodedSource = encodedSource.replace(/\\//g, '_');",
+											"  return encodedSource;",
+											"}",
+											"",
+											"// Encode the JWT data into the base64url encoded string",
+											"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+											"var encodedHeader = base64url(stringifiedHeader);",
+											"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+											"var encodedPayload = base64url(stringifiedPayload);",
+											"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+											"",
+											"// Set the environment variable used in the payload",
+											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Ssp-From",
+										"value": "{{ssp-from}}"
+									},
+									{
+										"key": "Ssp-To",
+										"value": "{{ssp-to-1_5_x}}"
+									},
+									{
+										"key": "Ssp-InteractionID",
+										"value": "urn:nhs:names:services:gpconnect:structured:fhir:rest:read:metadata-1"
+									},
+									{
+										"key": "Ssp-TraceID",
+										"value": "{{$guid}}"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{pre_request_script_generated_JWT}}"
+									}
+								],
+								"url": {
+									"raw": "{{providerURL_1_5_x_structured}}/metadata",
+									"host": [
+										"{{providerURL_1_5_x_structured}}"
+									],
+									"path": [
+										"metadata"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Access Record Structured (Example 1)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0644f839-21c3-4104-aebb-a8849de9d9f8",
+										"exec": [
+											"var targetURI = pm.environment.get(\"providerURL_1_5_x_structured\");",
+											"",
+											"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+											"",
+											"// Construct the JWT token for the request",
+											"var currentTime = new Date();",
+											"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+											"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+											"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+											"",
+											"var header = {",
+											"  \"alg\": \"none\",",
+											"  \"typ\": \"JWT\"",
+											"};",
+											"",
+											"var payload = {",
+											"  \"iss\": \"http://gpconnect-postman-url\",",
+											"  \"sub\": \"1\",",
+											"  \"aud\": targetURI,",
+											"  \"exp\": jwtExpiryTime,",
+											"  \"iat\": jwtCreationTime,",
+											"  \"reason_for_request\": \"directcare\",",
+											"  \"requested_scope\": \"patient/*.read\",",
+											"  \"requesting_device\": {",
+											"    \"resourceType\": \"Device\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"Web Interface\",",
+											"        \"value\": \"Postman example consumer\"",
+											"      }",
+											"    ],",
+											"    \"model\": \"Postman\",",
+											"    \"version\": \"1.0\"",
+											"  },",
+											"  \"requesting_organization\": {",
+											"    \"resourceType\": \"Organization\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+											"        \"value\": requesting_organization_ODS_Code",
+											"      }",
+											"    ],",
+											"    \"name\": \"Postman Organization\"",
+											"  },",
+											"  \"requesting_practitioner\": {",
+											"    \"resourceType\": \"Practitioner\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+											"        \"value\": \"G13579135\"",
+											"      },",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+											"        \"value\": \"111111111\"",
+											"      },",
+											"    ],",
+											"    \"name\": [{",
+											"      \"family\": \"Demonstrator\",",
+											"      \"given\": [",
+											"        \"GPConnect\"",
+											"      ],",
+											"      \"prefix\": [",
+											"        \"Mr\"",
+											"      ]",
+											"    }]",
+											"  }",
+											"};",
+											"",
+											"function base64url(source) {",
+											"  // Encode in classical base64",
+											"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+											"  // Remove padding equal characters",
+											"  encodedSource = encodedSource.replace(/=+$/, '');",
+											"  // Replace characters according to base64url specifications",
+											"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+											"  encodedSource = encodedSource.replace(/\\//g, '_');",
+											"  return encodedSource;",
+											"}",
+											"",
+											"// Encode the JWT data into the base64url encoded string",
+											"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+											"var encodedHeader = base64url(stringifiedHeader);",
+											"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+											"var encodedPayload = base64url(stringifiedPayload);",
+											"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+											"",
+											"// Set the environment variable used in the payload",
+											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Ssp-From",
+										"value": "{{ssp-from}}"
+									},
+									{
+										"key": "Ssp-To",
+										"value": "{{ssp-to-1_5_x}}"
+									},
+									{
+										"key": "Ssp-InteractionID",
+										"value": "urn:nhs:names:services:gpconnect:fhir:operation:gpc.getstructuredrecord-1"
+									},
+									{
+										"key": "Ssp-TraceID",
+										"value": "{{$guid}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{pre_request_script_generated_JWT}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n  {\n\t\"name\": \"patientNHSNumber\",\n\t\"valueIdentifier\": {\n\t\t\"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n\t    \"value\": \"{{patient_nhs_number_1_5_x}}\"\n\t}\n  },\n  {\n    \"name\": \"includeAllergies\",\n    \"part\": [ {\n\t\t\"name\": \"includeResolvedAllergies\",\n\t    \"valueBoolean\": true\n\t}\n\t]\n  },\n  {\n\t\"name\": \"includeMedication\",\n\t\"part\": [\n\t{\n\t\t\"name\": \"includePrescriptionIssues\",\n\t    \"valueBoolean\": true\n\t},\n\t{\n\t\t\"name\": \"medicationSearchFromDate\",\n\t    \"valueDate\": \"1980-06-05\"\n\t}\n\t]\n  }\n  ]\n}\n\n\n"
+								},
+								"url": {
+									"raw": "{{providerURL_1_5_x_structured}}/Patient/$gpc.getstructuredrecord",
+									"host": [
+										"{{providerURL_1_5_x_structured}}"
+									],
+									"path": [
+										"Patient",
+										"$gpc.getstructuredrecord"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Access Record Structured (Example 2)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e20ba8c7-dd7a-4620-8f1e-6883338c2556",
+										"exec": [
+											"var targetURI = pm.environment.get(\"providerURL_1_5_x_structured\");",
+											"",
+											"var requesting_organization_ODS_Code = pm.environment.get(\"requesting_organization_ODS_Code\");",
+											"",
+											"// Construct the JWT token for the request",
+											"var currentTime = new Date();",
+											"var expiryTime = new Date(currentTime.getTime() + 300000); // 5 mins after current time",
+											"var jwtCreationTime = Math.round(currentTime.getTime() / 1000);",
+											"var jwtExpiryTime = Math.round(expiryTime.getTime() / 1000);",
+											"",
+											"var header = {",
+											"  \"alg\": \"none\",",
+											"  \"typ\": \"JWT\"",
+											"};",
+											"",
+											"var payload = {",
+											"  \"iss\": \"http://gpconnect-postman-url\",",
+											"  \"sub\": \"1\",",
+											"  \"aud\": targetURI,",
+											"  \"exp\": jwtExpiryTime,",
+											"  \"iat\": jwtCreationTime,",
+											"  \"reason_for_request\": \"directcare\",",
+											"  \"requested_scope\": \"patient/*.read\",",
+											"  \"requesting_device\": {",
+											"    \"resourceType\": \"Device\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"Web Interface\",",
+											"        \"value\": \"Postman example consumer\"",
+											"      }",
+											"    ],",
+											"    \"model\": \"Postman\",",
+											"    \"version\": \"1.0\"",
+											"  },",
+											"  \"requesting_organization\": {",
+											"    \"resourceType\": \"Organization\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/ods-organization-code\",",
+											"        \"value\": requesting_organization_ODS_Code",
+											"      }",
+											"    ],",
+											"    \"name\": \"Postman Organization\"",
+											"  },",
+											"  \"requesting_practitioner\": {",
+											"    \"resourceType\": \"Practitioner\",",
+											"    \"id\": \"1\",",
+											"    \"identifier\": [",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-user-id\",",
+											"        \"value\": \"G13579135\"",
+											"      },",
+											"      {",
+											"        \"system\": \"https://fhir.nhs.uk/Id/sds-role-profile-id\",",
+											"        \"value\": \"111111111\"",
+											"      },",
+											"    ],",
+											"    \"name\": [{",
+											"      \"family\": \"Demonstrator\",",
+											"      \"given\": [",
+											"        \"GPConnect\"",
+											"      ],",
+											"      \"prefix\": [",
+											"        \"Mr\"",
+											"      ]",
+											"    }]",
+											"  }",
+											"};",
+											"",
+											"function base64url(source) {",
+											"  // Encode in classical base64",
+											"  encodedSource = CryptoJS.enc.Base64.stringify(source);",
+											"  // Remove padding equal characters",
+											"  encodedSource = encodedSource.replace(/=+$/, '');",
+											"  // Replace characters according to base64url specifications",
+											"  encodedSource = encodedSource.replace(/\\+/g, '-');",
+											"  encodedSource = encodedSource.replace(/\\//g, '_');",
+											"  return encodedSource;",
+											"}",
+											"",
+											"// Encode the JWT data into the base64url encoded string",
+											"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));",
+											"var encodedHeader = base64url(stringifiedHeader);",
+											"var stringifiedPayload = CryptoJS.enc.Utf8.parse(JSON.stringify(payload));",
+											"var encodedPayload = base64url(stringifiedPayload);",
+											"var jwtString = encodedHeader + \".\" + encodedPayload + \".\";",
+											"",
+											"// Set the environment variable used in the payload",
+											"pm.environment.set(\"pre_request_script_generated_JWT\", jwtString);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Ssp-From",
+										"value": "{{ssp-from}}"
+									},
+									{
+										"key": "Ssp-To",
+										"value": "{{ssp-to-1_5_x}}"
+									},
+									{
+										"key": "Ssp-InteractionID",
+										"value": "urn:nhs:names:services:gpconnect:fhir:operation:gpc.getstructuredrecord-1"
+									},
+									{
+										"key": "Ssp-TraceID",
+										"value": "{{$guid}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/fhir+json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{pre_request_script_generated_JWT}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"resourceType\": \"Parameters\",\n  \"parameter\": [\n  {\n\t\"name\": \"patientNHSNumber\",\n\t\"valueIdentifier\": {\n\t\t\"system\": \"https://fhir.nhs.uk/Id/nhs-number\",\n\t    \"value\": \"{{patient_nhs_number_1_5_x}}\"\n\t}\n  },\n    {\n      \"name\": \"includeAllergies\",\n      \"part\": [\n        {\n          \"name\": \"includeResolvedAllergies\",\n          \"valueBoolean\": true\n        }\n      ]\n    },\n    {\n      \"name\": \"includeMedication\"\n    },\n    {\n      \"name\": \"includeConsultations\",\n      \"part\": [\n        {\n          \"name\": \"includeNumberOfMostRecent\",\n          \"valueInteger\": 3\n        }\n      ]\n    },\n    {\n      \"name\": \"includeProblems\"\n    },\n    {\n      \"name\": \"includeImmunisations\"\n    },\n    {\n      \"name\": \"includeUncategorisedData\"\n    },\n    {\n      \"name\": \"includeInvestigations\"\n    },\n    {\n      \"name\": \"includeReferrals\"\n    }\n  ]\n}"
+								},
+								"url": {
+									"raw": "{{providerURL_1_5_x_structured}}/Patient/$gpc.getstructuredrecord",
+									"host": [
+										"{{providerURL_1_5_x_structured}}"
 									],
 									"path": [
 										"Patient",
