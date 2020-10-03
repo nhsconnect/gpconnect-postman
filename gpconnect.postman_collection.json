@@ -3577,7 +3577,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{providerURL_1_5_x_documents}}/Patient/2/DocumentReference?_include=DocumentReference:subject:Patient&_include=DocumentReference:custodian:Organization&_include=DocumentReference:author:Organization&_include=DocumentReference:author:Practitioner&_revinclude:recurse=PractitionerRole:practitioner",
+									"raw": "{{providerURL_1_5_x_documents}}/Patient/2/DocumentReference?_include=DocumentReference%3Asubject%3APatient&_include=DocumentReference%3Acustodian%3AOrganization&_include=DocumentReference%3Aauthor%3AOrganization&_include=DocumentReference%3Aauthor%3APractitioner&_revinclude%3Arecurse=PractitionerRole%3Apractitioner",
 									"host": [
 										"{{providerURL_1_5_x_documents}}"
 									],
@@ -3589,23 +3589,43 @@
 									"query": [
 										{
 											"key": "_include",
-											"value": "DocumentReference:subject:Patient"
+											"value": "DocumentReference%3Asubject%3APatient"
 										},
 										{
 											"key": "_include",
-											"value": "DocumentReference:custodian:Organization"
+											"value": "DocumentReference%3Acustodian%3AOrganization"
 										},
 										{
 											"key": "_include",
-											"value": "DocumentReference:author:Organization"
+											"value": "DocumentReference%3Aauthor%3AOrganization"
 										},
 										{
 											"key": "_include",
-											"value": "DocumentReference:author:Practitioner"
+											"value": "DocumentReference%3Aauthor%3APractitioner"
 										},
 										{
-											"key": "_revinclude:recurse",
-											"value": "PractitionerRole:practitioner"
+											"key": "_revinclude%3Arecurse",
+											"value": "PractitionerRole%3Apractitioner"
+										},
+										{
+											"key": "created",
+											"value": "ge2001-01-01",
+											"disabled": true
+										},
+										{
+											"key": "created",
+											"value": "le2020-09-01",
+											"disabled": true
+										},
+										{
+											"key": "author",
+											"value": "https%3A%2F%2Ffhir.nhs.uk%2FId%2Fods-organization-code%7CB82617",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "Description search",
+											"disabled": true
 										}
 									]
 								}
